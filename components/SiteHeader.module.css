@@ -1,0 +1,123 @@
+.header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background: var(--color-header);
+}
+
+.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.bar {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 16px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  color: var(--color-gold);
+}
+
+.logo {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+}
+
+.brandName {
+  max-width: 800px;
+  font-size: 32px;
+}
+
+.menuButton {
+  display: none;
+}
+
+.menu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.menu > * + * {
+  margin-inline-start: 8px;
+}
+
+.link {
+  display: flex;
+  flex: 0 0 auto;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  border-radius: 6px;
+  background: none;
+  color: rgb(237, 237, 236);
+  font-weight: 500;
+  white-space: pre;
+  transition: background 0.1s;
+}
+
+.link:hover {
+  background: rgb(40, 40, 38);
+}
+
+.link:active {
+  background: rgb(46, 46, 43);
+}
+
+.link:focus-within {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+@media (max-width: 768px) {
+  .menuButton {
+    appearance: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    min-height: 40px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    color: var(--color-white);
+    font-size: 13.3333px;
+    cursor: pointer;
+  }
+
+  .menu {
+    display: none;
+    flex-direction: column;
+    flex-shrink: 0;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .menuOpen {
+    display: flex;
+  }
+
+  .menu > * + * {
+    margin-inline-start: 0;
+    margin-top: 8px;
+  }
+}

@@ -1,29 +1,25 @@
-# Next.js Static Export
+# www.masq.foundation
 
-Next.js enables starting as a static site or Single-Page Application (SPA), then later optionally upgrading to use features that require a server.
+The MASQ Foundation website: a Next.js app exported as a static site (`output: 'export'`) and deployed on Cloudflare Pages.
 
-When running `next build`, Next.js generates an HTML file per route. By breaking a strict SPA into individual HTML files, Next.js can avoid loading unnecessary JavaScript code on the client-side, reducing the bundle size and enabling faster page loads.
-
-Learn more: https://nextjs.org/docs/app/building-your-application/deploying/static-exports
-
-## Deploy your own
-
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-static-export)
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-static-export)
-
-## How to use
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
+## Development
 
 ```bash
-npx create-next-app --example with-static-export with-static-export-app
+pnpm install
+pnpm dev      # http://localhost:3000
+pnpm build    # static site written to ./out
+pnpm start    # build, then serve ./out
 ```
 
-```bash
-yarn create next-app --example with-static-export with-static-export-app
-```
+## Layout
 
-```bash
-pnpm create next-app --example with-static-export with-static-export-app
-```
+- `app/` holds one folder per route (`/`, `/about`, `/projects`, `/grants`, `/donate`). Page-specific styles sit next to each page as CSS Modules.
+- `components/` holds the shared page frame (`PageShell`, `SiteHeader`, `SiteFooter`), the `SimplePage` title-and-copy template, the `Reveal` fade-in wrapper, and SVG icons.
+- `app/globals.css` holds the color tokens and base element resets.
+- `public/images/` holds the logo, card images and background photos.
+
+Layouts switch to mobile at 768px and below.
+
+## Configuration
+
+Google Analytics uses measurement ID `G-NZK0JWJV36` by default. Set `NEXT_PUBLIC_GOOGLE_ANALYTICS_KEY` to override it (see `.env.local.example`).

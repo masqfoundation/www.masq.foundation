@@ -1,0 +1,48 @@
+:root {
+  --color-gold: #e5aa43;
+  --color-text: #535353;
+  --color-white: #ffffff;
+  --color-light-gray: #eeeeee;
+  --color-header: rgba(19, 14, 1, 0.9);
+  --focus-ring: 0 0 0 3px rgb(150, 199, 242);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: var(--color-gold);
+  text-decoration: none;
+}
+
+img,
+svg {
+  display: block;
+}
