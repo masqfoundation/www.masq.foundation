@@ -1,5 +1,22 @@
+import type { Metadata } from "next";
+import { Nunito } from "next/font/google";
 import Script from "next/script";
 import { GOOGLE_ANALYTICS_KEY } from "../lib/config";
+import "./globals.css";
+
+const nunito = Nunito({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-nunito",
+  display: "swap",
+});
+
+export const metadata: Metadata = {
+  title: {
+    default: "MASQ Foundation",
+    template: "%s | MASQ Foundation",
+  },
+};
 
 export default function RootLayout({
   children,
@@ -7,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={nunito.variable}>
       <body>
         {children}
         {GOOGLE_ANALYTICS_KEY && (
