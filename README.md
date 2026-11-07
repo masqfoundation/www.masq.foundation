@@ -22,4 +22,4 @@ Layouts switch to mobile at 768px and below.
 
 ## Configuration
 
-Google Analytics uses measurement ID `G-NZK0JWJV36` by default. Set `NEXT_PUBLIC_GOOGLE_ANALYTICS_KEY` to override it (see `.env.local.example`).
+Set `NEXT_PUBLIC_GOOGLE_ANALYTICS_KEY` to the GA4 measurement ID (see `.env.local.example`). It's read at build time, so on Cloudflare Pages it must be set as a build environment variable for both Production and Preview. The GA tag is left out when it's unset.
