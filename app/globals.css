@@ -1,18 +1,42 @@
 :root {
+  --color-bg: #07090c;
   --color-gold: #e5aa43;
-  --color-text: #535353;
-  --color-white: #ffffff;
-  --color-light-gray: #eeeeee;
-  --color-header: rgba(19, 14, 1, 0.9);
+  --color-gold-hover: #f3c879;
+  --color-gold-bright: #f0bb5c;
+  --color-on-gold: #1a1305;
+  --color-cyan: #6fd3e4;
+  --color-steel: #8fa3b8;
+  --color-heading: #fbf7ee;
+  --color-text: #f3efe6;
+  --color-body: #d9d2c3;
+  --color-muted: #b9b1a1;
+  --color-icon: #9a9a9a;
+  --color-nav: #ededec;
+  --surface: rgba(255, 255, 255, 0.04);
+  --surface-strong: rgba(255, 255, 255, 0.06);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.22);
   --focus-ring: 0 0 0 3px rgb(150, 199, 242);
 }
 
 html {
   scroll-behavior: smooth;
+  background: var(--color-bg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 body {
   margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-nunito), "Nunito", sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
 }
 
 *,
@@ -26,14 +50,16 @@ h2,
 h3,
 p,
 ul,
-li {
+ol,
+li,
+dl,
+dd {
   margin: 0;
   padding: 0;
-  font-size: inherit;
-  font-weight: inherit;
 }
 
-ul {
+ul,
+ol {
   list-style: none;
 }
 
@@ -42,7 +68,27 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  color: var(--color-gold-hover);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
 img,
 svg {
   display: block;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
 }

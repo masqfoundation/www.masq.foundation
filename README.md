@@ -14,9 +14,9 @@ pnpm start    # build, then serve ./out
 ## Layout
 
 - `app/` holds one folder per route (`/`, `/about`, `/projects`, `/grants`, `/donate`). Page-specific styles sit next to each page as CSS Modules.
-- `components/` holds the shared page frame (`PageShell`, `SiteHeader`, `SiteFooter`), the `SimplePage` title-and-copy template, the `Reveal` fade-in wrapper, and SVG icons.
+- `components/` holds the shared page frame (`PageShell`, `SiteHeader`, `SiteFooter`), the `SimplePage` title-and-copy template, `ParticleField` (the home page's scroll-driven WebGL background), shared styles in `ui.module.css`, and SVG icons.
 - `app/globals.css` holds the color tokens and base element resets.
-- `public/images/` holds the logo, card images and background photos.
+- `public/images/` holds the logo.
 
 Layouts switch to mobile at 768px and below.
 

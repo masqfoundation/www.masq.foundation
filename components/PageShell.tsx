@@ -4,19 +4,18 @@ import styles from "./PageShell.module.css";
 
 type PageShellProps = {
   children: React.ReactNode;
-  /** Home page: the header floats over the full-bleed hero. */
+  /** Home page: the header floats over the full-screen hero. */
   overlayHeader?: boolean;
+  /** Drawn behind the header, content and footer (the home page's particle field). */
+  background?: React.ReactNode;
 };
 
-export default function PageShell({ children, overlayHeader = false }: PageShellProps) {
+export default function PageShell({ children, overlayHeader = false, background }: PageShellProps) {
   return (
     <div className={styles.page}>
-      <SiteHeader fixed={overlayHeader} />
-      <main className={styles.main}>
-        <div className={`${styles.content} ${overlayHeader ? styles.fullWidth : ""}`}>
-          {children}
-        </div>
-      </main>
+      {background}
+      <SiteHeader overlay={overlayHeader} />
+      <main className={styles.main}>{children}</main>
       <SiteFooter />
     </div>
   );

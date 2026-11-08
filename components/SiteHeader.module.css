@@ -1,123 +1,69 @@
 .header {
   position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  background: var(--color-header);
+  z-index: 2;
 }
 
-.fixed {
-  position: fixed;
+.overlay {
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
 }
 
 .bar {
-  position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  padding: 16px;
+  gap: 16px;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px 32px;
 }
 
 .brand {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 16px;
+  gap: 14px;
   color: var(--color-gold);
 }
 
 .logo {
   flex-shrink: 0;
-  width: 64px;
-  height: 64px;
-  object-fit: cover;
+  width: 44px;
+  height: 44px;
 }
 
 .brandName {
-  max-width: 800px;
-  font-size: 32px;
+  font-size: 22px;
+  font-weight: 600;
 }
 
-.menuButton {
-  display: none;
-}
-
-.menu {
+.nav {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.menu > * + * {
-  margin-inline-start: 8px;
+  flex-wrap: wrap;
+  gap: 4px;
 }
 
 .link {
-  display: flex;
-  flex: 0 0 auto;
-  justify-content: center;
-  align-items: center;
-  padding: 12px;
-  border-radius: 6px;
-  background: none;
-  color: rgb(237, 237, 236);
-  font-weight: 500;
-  white-space: pre;
+  padding: 12px 14px;
+  border-radius: 8px;
+  color: var(--color-nav);
+  font-weight: 600;
   transition: background 0.1s;
 }
 
 .link:hover {
-  background: rgb(40, 40, 38);
-}
-
-.link:active {
-  background: rgb(46, 46, 43);
-}
-
-.link:focus-within {
-  outline: none;
-  box-shadow: var(--focus-ring);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--color-nav);
 }
 
 @media (max-width: 768px) {
-  .menuButton {
-    appearance: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 40px;
-    min-height: 40px;
-    margin: 0;
-    padding: 0;
-    border: none;
-    background: none;
-    color: var(--color-white);
-    font-size: 13.3333px;
-    cursor: pointer;
+  .bar {
+    padding: 16px;
   }
 
-  .menu {
-    display: none;
-    flex-direction: column;
-    flex-shrink: 0;
-    width: 100%;
-    margin-top: 10px;
-  }
-
-  .menuOpen {
-    display: flex;
-  }
-
-  .menu > * + * {
-    margin-inline-start: 0;
-    margin-top: 8px;
+  .brandName {
+    font-size: 19px;
   }
 }

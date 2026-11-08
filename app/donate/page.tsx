@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import PageShell from "@/components/PageShell";
+import ui from "@/components/ui.module.css";
 import DonateTabs from "./DonateTabs";
 import styles from "./page.module.css";
 
@@ -11,6 +12,8 @@ const WALLETS = [
   { label: "ETH", address: "0x9C2FA8Bae7E83515fa1B9A9d57609a2Ab54FbC9E" },
 ];
 
+const EMAIL = <a href="mailto:info@masq.foundation">info@masq.foundation</a>;
+
 const FAQ: { question: string; answer: React.ReactNode }[] = [
   {
     question: "Do I have to fill out the form if I donate in cryptocurrency?",
@@ -19,8 +22,7 @@ const FAQ: { question: string; answer: React.ReactNode }[] = [
   },
   {
     question: "Do you accept other currencies?",
-    answer:
-      "Yes, please contact us directly at info@masq.foundation if you need help donating in any other form of fiat or cryptocurrency.",
+    answer: <>Yes, please contact us directly at {EMAIL} if you need help donating in any other form of fiat or cryptocurrency.</>,
   },
   {
     question: "I accidentally sent my cryptocurrency to the wrong address. Can you help?",
@@ -29,22 +31,12 @@ const FAQ: { question: string; answer: React.ReactNode }[] = [
   },
   {
     question: "Can I get a refund for my donation?",
-    answer: "For refunds, please contact us directly at info@masq.foundation.",
+    answer: <>For refunds, please contact us directly at {EMAIL}.</>,
   },
   {
     question: "Do I need to make a donation to use any of the software provided by MASQ Foundation?",
     answer:
       "No. All of the software and information we create is permissively licensed and completely free to use. If someone is charging for access, it does not come from the MASQ Foundation and we cannot speak to its safety.",
-  },
-  {
-    question: "How will you use my donation?",
-    answer: (
-      <>
-        We use all funds to create, improve, organize and promote open source software and documentation that is free to
-        the public. You can help our mission to to help shape the next generation of computing on the Internet. For more
-        information about the MASQ Foundation&apos;s finances, you can view our <a href="/public/">reports page</a>.
-      </>
-    ),
   },
   {
     question: "Is my donation tax-deductible?",
@@ -57,57 +49,54 @@ export default function Donate() {
   return (
     <PageShell>
       <div className={styles.page}>
-        <h1 className={styles.title}>Support our mission</h1>
-
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Donate in fiat</h2>
-          <DonateTabs />
+        <section className={styles.intro}>
+          <p className={`${ui.eyebrow} ${ui.eyebrowLarge}`}>Donate</p>
+          <h1 className={ui.pageTitle}>Support our mission</h1>
+          <p className={ui.lead}>
+            Your support sustains our work for the public good: research, engineering, and education that make
+            security, privacy, and decentralization accessible to everyone.
+          </p>
         </section>
 
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Donate in cryptocurrency</h2>
-          <div className={styles.columns}>
-            <div className={styles.column}>
-              <iframe
-                className={styles.formFrame}
-                src="https://tally.so/embed/wzjBM8?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
-                title="Cryptocurrency donation form"
-              />
-            </div>
-            <div className={styles.column}>
-              <h3 className={styles.walletTitle}>Wallet Addresses</h3>
-              <div className={styles.wallets}>
-                <div className={styles.walletLabels}>
-                  {WALLETS.map(({ label }) => (
-                    <div key={label}>{label}</div>
-                  ))}
+        <div className={styles.grid}>
+          <section className={ui.panel}>
+            <p className={ui.eyebrow}>01 — Fiat</p>
+            <h2 className={ui.subheading}>Donate in fiat</h2>
+            <DonateTabs />
+          </section>
+
+          <section className={ui.panel}>
+            <p className={`${ui.eyebrow} ${ui.cyan}`}>02 — Crypto</p>
+            <h2 className={ui.subheading}>Donate in cryptocurrency</h2>
+            <dl className={styles.wallets}>
+              {WALLETS.map(({ label, address }) => (
+                <div key={label} style={{ display: "contents" }}>
+                  <dt className={styles.walletLabel}>{label}</dt>
+                  <dd className={styles.walletAddress}>{address}</dd>
                 </div>
-                <div className={styles.walletValues}>
-                  {WALLETS.map(({ label, address }) => (
-                    <div key={label}>{address}</div>
-                  ))}
-                </div>
+              ))}
+            </dl>
+            <iframe
+              className={styles.formFrame}
+              src="https://tally.so/embed/wzjBM8?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+              title="Report your cryptocurrency donation"
+            />
+          </section>
+        </div>
+
+        <section className={ui.panel}>
+          <p className={ui.eyebrow}>03 — Questions</p>
+          <h2 className={ui.subheading}>FAQ</h2>
+          <div className={styles.faq}>
+            {FAQ.map(({ question, answer }) => (
+              <div key={question} className={styles.faqItem}>
+                <h3 className={styles.question}>{question}</h3>
+                <p className={styles.answer}>{answer}</p>
               </div>
-            </div>
+            ))}
           </div>
-        </section>
-
-        <section className={styles.faq}>
-          <h2 className={styles.sectionTitle}>FAQ</h2>
-          {FAQ.map(({ question, answer }) => (
-            <FaqItem key={question} question={question} answer={answer} />
-          ))}
         </section>
       </div>
     </PageShell>
-  );
-}
-
-function FaqItem({ question, answer }: { question: string; answer: React.ReactNode }) {
-  return (
-    <>
-      <h3 className={styles.question}>{question}</h3>
-      <div>{answer}</div>
-    </>
   );
 }
