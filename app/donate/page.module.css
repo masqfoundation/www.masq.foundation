@@ -1,224 +1,135 @@
 .page {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 32px;
-  width: 100%;
-  padding: 32px;
+  gap: 40px;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 64px 32px 96px;
 }
 
-.title {
-  font-size: 48px;
-}
-
-.section {
+.intro {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 100%;
-  padding: 8px;
+  gap: 16px;
+  max-width: 760px;
 }
 
-.sectionTitle {
-  width: 100%;
-  font-size: 32px;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 520px), 1fr));
+  gap: 24px;
 }
 
 /* Fiat: Monthly / Once tabs */
-.tabs {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  padding: 8px;
-}
-
 .tabList {
-  position: relative;
   display: flex;
-  align-items: stretch;
-  width: 100%;
-  padding: 8px;
+  flex-wrap: wrap;
+  align-self: flex-start;
+  gap: 6px;
+  padding: 4px;
+  border-radius: 999px;
+  background: var(--surface-strong);
 }
 
 .tab {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
-  padding: 12px 20px;
+  height: 44px;
+  padding: 0 20px;
   border: 0;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0);
-  color: rgb(27, 27, 24);
-  font-family: inherit;
-  font-size: 20px;
-  font-weight: 500;
-  line-height: inherit;
-  white-space: pre;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-muted);
+  font: inherit;
+  font-size: 16px;
+  font-weight: 700;
   cursor: pointer;
-  transition: background 0.1s;
+  transition: background 0.1s, color 0.1s;
 }
 
 .tab:hover {
-  background: rgb(233, 233, 230);
+  color: var(--color-heading);
 }
 
-.tab:active {
-  background: rgb(227, 227, 224);
-}
-
-.tab:focus-within {
-  outline: none;
-  box-shadow: var(--focus-ring);
-}
-
-.tabIndicator {
-  position: absolute;
-  bottom: 0;
-  height: 2px;
-  background: rgb(119, 119, 255);
-}
-
-.tabPanel {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  padding: 8px;
-}
-
-.amountsWrap {
-  max-width: 100%;
+.tab[aria-selected="true"] {
+  background: var(--color-gold);
+  color: var(--color-on-gold);
 }
 
 .amounts {
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 16px;
-  width: 100%;
-  padding: 8px;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 .amount {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-width: 100px;
-  padding: 12px 20px;
+  min-width: 96px;
+  padding: 14px 22px;
+  border: 1px solid var(--color-gold);
   border-radius: 999px;
-  background: rgb(237, 246, 255);
-  color: rgb(0, 106, 220);
-  font-size: 24px;
-  font-weight: 500;
-  white-space: pre;
-  transition: background 0.1s;
+  color: var(--color-gold);
+  font-size: 22px;
+  font-weight: 600;
+  text-align: center;
+  transition: background 0.1s, color 0.1s;
 }
 
 .amount:hover {
-  background: rgb(225, 240, 255);
-}
-
-.amount:active {
-  background: rgb(206, 231, 254);
-}
-
-.amount:focus {
-  outline: none;
-  box-shadow: var(--focus-ring);
+  background: var(--color-gold);
+  color: var(--color-on-gold);
 }
 
 /* Cryptocurrency */
-.columns {
-  display: flex;
-  align-items: stretch;
-  width: 100%;
-  padding: 8px;
+.wallets {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 12px 20px;
+  font-size: 16px;
 }
 
-.column {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 50%;
-  padding: 8px;
+.walletLabel {
+  color: var(--color-muted);
+  font-weight: 700;
+}
+
+.walletAddress {
+  color: var(--color-heading);
+  font-family: ui-monospace, Menlo, monospace;
+  overflow-wrap: anywhere;
 }
 
 .formFrame {
-  /* Keep the browser's default iframe border outside the 368px height. */
-  box-sizing: content-box;
-  flex-shrink: 0;
   width: 100%;
-  max-width: 100%;
   height: 368px;
-}
-
-.walletTitle {
-  max-width: 100%;
-  font-size: 20px;
-}
-
-.wallets {
-  display: flex;
-  align-items: stretch;
-  width: 100%;
-  padding: 8px;
-}
-
-.walletLabels,
-.walletValues {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  padding: 8px;
-}
-
-.walletLabels {
-  width: calc(100% * 2 / 12);
-}
-
-.walletValues {
-  width: calc(100% * 10 / 12);
-}
-
-.walletValues > * {
-  width: 100%;
+  border: 0;
+  border-radius: 14px;
+  color-scheme: normal;
 }
 
 /* FAQ */
 .faq {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  width: 100%;
-  padding: 8px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+  gap: 28px 48px;
 }
 
-.faq > * {
-  width: 100%;
+.faqItem {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .question {
+  color: var(--color-heading);
+  font-size: 18px;
   font-weight: 700;
 }
 
+.answer {
+  color: var(--color-body);
+  white-space: pre-line;
+}
+
 @media (max-width: 768px) {
-  .amounts {
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .columns,
-  .wallets {
-    flex-wrap: wrap;
-  }
-
-  .column,
-  .walletLabels,
-  .walletValues {
-    width: 100%;
+  .page {
+    padding: 40px 16px 64px;
   }
 }

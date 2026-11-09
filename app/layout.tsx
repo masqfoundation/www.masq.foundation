@@ -6,7 +6,7 @@ import "./globals.css";
 
 const nunito = Nunito({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "600", "700"],
   variable: "--font-nunito",
   display: "swap",
 });

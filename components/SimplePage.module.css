@@ -1,24 +1,21 @@
 .section {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 32px;
-  width: 100%;
-  padding: 8px;
-}
-
-.title {
-  font-size: 48px;
-}
-
-.body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  padding: 8px;
+  gap: 24px;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 64px 32px 96px;
 }
 
 .text {
-  max-width: 100%;
+  max-width: 760px;
+  color: var(--color-body);
+  font-size: 19px;
+  white-space: pre-line;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 40px 16px 64px;
+  }
 }
